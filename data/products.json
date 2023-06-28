@@ -1,0 +1,24 @@
+[
+    {
+        "name": "oppo",
+        "price": 790,
+        "description": "balalala",
+        "rating": 9.5,
+        "images": [
+            {
+                "public_id": "11111",
+                "url": "aaaa"
+            }
+        ],
+        "category": "Phone",
+        "stock": 10,
+        "numOfReviews": 15,
+        "reviews": [
+            {
+                "name": "thamer",
+                "rating": 5,
+                "comment": "haha"
+            }
+        ]
+    }
+]
