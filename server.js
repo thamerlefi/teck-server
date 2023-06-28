@@ -26,7 +26,7 @@ require('dotenv').config()
 app.use(cors())
 app.set('view engine', 'ejs')
 
-//---------------------------------------------- routes
+//---------------------------------------------- routes --
 // products route
 app.use('/api/products', productRouter)
 
@@ -44,6 +44,7 @@ app.use(express.static(path.join(__dirname, '../teck-client/build')));
 // unexpected routes
 app.all('*', (req,res,next)=>{
     // next(newError(404,'connot find this url'))
+    
     res.sendFile(path.join(__dirname, '../teck-client/build/index.html'));
 })
 
