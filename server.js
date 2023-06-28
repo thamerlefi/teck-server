@@ -39,7 +39,6 @@ app.use('/api/admin', adminRouter)
 // orders route
 app.use('/api/orders', orderRouter)
 
-const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, '/teck-client/build')));
 
 // unexpected routes
