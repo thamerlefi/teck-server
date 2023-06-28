@@ -78,6 +78,7 @@ exports.userRegister = async(req,res,next)=>{
     try {
         const userr = await User.findOne({email: req.body.email})
         if (userr) return next(newError(404, 'user already exist')) //res.status(400).json({message: 'user already exist'})
+        if(req.body.password.trim() === "") return next(newError(400, 'passwords is required'))
         if(req.body.password !== req.body.confirm) return next(newError(400, 'passwords not matches'))
         const hashedPass = await bcrypt.hash(req.body.password,10)
         req.body.password = hashedPass
