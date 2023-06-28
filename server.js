@@ -18,7 +18,7 @@ const orderRouter = require('./routes/orders')
 const app = express()
 
 // middlewares
-app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({extended:false}))
 app.use(cookieParser())
@@ -39,10 +39,13 @@ app.use('/api/admin', adminRouter)
 // orders route
 app.use('/api/orders', orderRouter)
 
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/teck-client/build')));
+
 // unexpected routes
 app.all('*', (req,res,next)=>{
     // next(newError(404,'connot find this url'))
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '/teck-client/build/index.html'));
 })
 
 // global error handler middleware
