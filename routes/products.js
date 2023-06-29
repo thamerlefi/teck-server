@@ -25,8 +25,6 @@ router.get("/categories", getAllCategs);
 router.get("/", paginatedResults(ProductModel), getProducts);
 router.get("/:id", getOneProduct);
 
-
-
 // comment product
 router.post("/:productId/comment", isAuth, commentProduct);
 

@@ -15,6 +15,7 @@ router.post('/create-order' ,createOrder)
 // get all orders (only admin) => /api/orders/all
 router.get('/all',isAuth, isAdmin, paginatedResults(OrderModel) ,getAllOrders)
 
+// 
 router.get('/order-count-by-category',isAuth,isAdmin ,getNumOrdersByCateg)
 
 // get one order by id (only admin) => /api/orders/:id
