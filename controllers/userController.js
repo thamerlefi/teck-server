@@ -147,7 +147,9 @@ exports.userUpdate = async(req,res,next)=>{
     try {
         const user = await User.findById(req.userToken.id)
         if(!user) return res.status(404).json({message: 'user not found'})
-       if(req.body.password.trim() !== ""){
+        if(req.body.firstName.trim() === "") return next(newError(400, 'first name is required'))
+        if(req.body.lastName.trim() === "") return next(newError(400, 'last name is required'))
+       if(req.body.password.trim() !== "" || req.body.confirm.trim() !== ""){
             if(req.body.password !== req.body.confirm) return next(newError(400, 'passwords not matches'))
              req.body.password = await bcrypt.hash(req.body.password, 10)
         } else{
