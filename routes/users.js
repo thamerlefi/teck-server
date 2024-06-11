@@ -5,6 +5,22 @@ const isAuth = require('../middlewares/auth')
 const router = require('express').Router()
 const upload = multer()
 
+//  api/user/whatsapp-webhook
+router.get("/whatsapp-webhook",(req,res) => {
+  const VERIFY_TOKEN = "thamer_token";
+  const mode = req.query["hub.mode"];
+  const token = req.query["hub.verify_token"];
+  const challenge = req.query["hub.challenge"];
+
+  console.log("webhook verification triggered");
+
+  if (mode === "subscribe" && token === VERIFY_TOKEN) {
+    console.log("WEBHOOK_VERIFIED");
+    res.status(200).send(challenge);
+  } else {
+    res.status(403).send("Verification token mismatch");
+  }
+})
 
 // forgot password
 router.post('/forgot-password',forgotPassword)
