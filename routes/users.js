@@ -25,6 +25,9 @@ router.get("/whatsapp-webhook",(req,res) => {
 //  api/user/whatsapp-webhook
 router.post("/whatsapp-webhook",(req,res) => {
   console.log("Received webhook: ", req.body.entry[0].changes)
+  console.log("Received metadata: ", req.body.entry[0].changes[0].value.metadata)
+  console.log("Received contacts: ", req.body.entry[0].changes[0].value.contacts)
+  console.log("Received messages: ", req.body.entry[0].changes[0].value.messages)
   res.status(200).send();
 })
 
