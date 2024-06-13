@@ -22,6 +22,12 @@ router.get("/whatsapp-webhook",(req,res) => {
   }
 })
 
+//  api/user/whatsapp-webhook
+router.post("/whatsapp-webhook",(req,res) => {
+  console.log("Received webhook: ", req.body)
+  res.status(200).send();
+})
+
 // forgot password
 router.post('/forgot-password',forgotPassword)
 router.get('/reset-password/:id/:token',resetPassword)
